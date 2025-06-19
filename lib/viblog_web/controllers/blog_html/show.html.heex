@@ -1,0 +1,15 @@
+<div class="brutal-container">
+  <.link href={~p"/blog"} class="brutal-back">← ALL POSTS</.link>
+
+  <h1><%= @post.title %></h1>
+
+  <div class="brutal-meta">
+    <time><%= @post.date %></time> by <%= @post.author %>
+  </div>
+
+  <div class="brutal-tags">
+    TAGGED: <%= Enum.join(@post.tags, " • ") %>
+  </div>
+
+  <%= raw @post.body %>
+</div>

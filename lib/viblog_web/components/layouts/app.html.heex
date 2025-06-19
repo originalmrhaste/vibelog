@@ -1,0 +1,14 @@
+<nav class="brutal-nav">
+  <div class="brutal-nav-container">
+    <.link href={~p"/"} class="brutal-logo">BOZIDAR.DEV</.link>
+    <div class="brutal-nav-links">
+      <.link href={~p"/"} class="brutal-nav-link">BLOG</.link>
+      <.link href={~p"/about"} class="brutal-nav-link">ABOUT</.link>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <.flash_group flash={@flash} />
+  {@inner_content}
+</main>

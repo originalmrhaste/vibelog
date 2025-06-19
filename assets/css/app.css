@@ -1,0 +1,256 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Neo-Brutalist Blog Styles */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: #000;
+  color: #fff;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Brutal Navigation */
+.brutal-nav {
+  background: #fff;
+  border-bottom: 8px solid #000;
+  padding: 1rem 0;
+  box-shadow: 0 8px 0px #ff0066;
+}
+
+.brutal-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brutal-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  text-decoration: none;
+  border: 4px solid #000;
+  padding: 0.75rem 1rem;
+  background: #ffff00;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.brutal-logo:hover {
+  background: #ff0066;
+  color: #fff;
+  border-bottom: 4px solid #000;
+}
+
+.brutal-nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.brutal-nav-link {
+  font-weight: 800;
+  color: #000;
+  text-decoration: none;
+  border: 3px solid #000;
+  padding: 0.75rem 1.5rem;
+  background: #00ff88;
+  box-shadow: 3px 3px 0px #000;
+  text-transform: uppercase;
+}
+
+.brutal-nav-link:hover {
+  background: #ff0066;
+  color: #fff;
+  border-bottom: 3px solid #000;
+}
+
+/* Brutal container */
+.brutal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  color: #000;
+  border: 8px solid #000;
+  box-shadow: 16px 16px 0px #ff0066;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .brutal-container {
+    padding: 3rem;
+  }
+}
+
+/* Brutal headings */
+h1, h2, h3 {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 2rem 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3rem;
+  background: #ff0066;
+  color: #fff;
+  padding: 1rem;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0px #000;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+  background: #00ff88;
+  color: #000;
+  padding: 0.75rem;
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px #000;
+}
+
+h3 {
+  font-size: 1.5rem;
+  background: #ffff00;
+  color: #000;
+  padding: 0.5rem;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0px #000;
+}
+
+/* Brutal links */
+a {
+  color: #ff0066;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 3px solid #ff0066;
+  transition: none;
+}
+
+a:hover {
+  background: #ff0066;
+  color: #fff;
+  border-bottom: 3px solid #000;
+}
+
+/* Brutal post containers */
+.brutal-post {
+  background: #fff;
+  border: 6px solid #000;
+  box-shadow: 12px 12px 0px #00ff88;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.brutal-post h2 {
+  margin-top: 0;
+}
+
+/* Brutal meta info */
+.brutal-meta {
+  background: #000;
+  color: #fff;
+  padding: 1rem;
+  border: 3px solid #fff;
+  margin: 1rem 0;
+  font-weight: 700;
+}
+
+.brutal-meta time {
+  color: #00ff88;
+}
+
+/* Brutal tags */
+.brutal-tags {
+  background: #ffff00;
+  color: #000;
+  padding: 0.75rem;
+  border: 3px solid #000;
+  margin: 1rem 0;
+  font-weight: 700;
+}
+
+/* Brutal paragraphs */
+p {
+  margin: 1.5rem 0;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Brutal code blocks */
+pre, code {
+  font-family: 'JetBrains Mono', monospace;
+  background: #000;
+  color: #00ff88;
+  border: 3px solid #fff;
+}
+
+pre {
+  padding: 1.5rem;
+  overflow-x: auto;
+  box-shadow: 6px 6px 0px #ff0066;
+}
+
+code {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9em;
+}
+
+/* Brutal lists */
+ul, ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+  line-height: 1.7;
+}
+
+li {
+  margin: 0.75rem 0;
+  font-weight: 400;
+}
+
+/* Brutal back link */
+.brutal-back {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: 4px solid #fff;
+  box-shadow: 6px 6px 0px #ff0066;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.brutal-back:hover {
+  background: #ff0066;
+  color: #fff;
+  border-bottom: 4px solid #fff;
+}
+
+/* Brutal emphasis */
+strong {
+  font-weight: 800;
+  background: #ffff00;
+  color: #000;
+  padding: 0.1rem 0.25rem;
+}
+
+em {
+  font-style: normal;
+  background: #00ff88;
+  color: #000;
+  padding: 0.1rem 0.25rem;
+  font-weight: 700;
+}
