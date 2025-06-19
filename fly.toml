@@ -1,16 +1,16 @@
-# fly.toml app configuration file generated for viblog on 2025-06-19T20:37:11Z
+# fly.toml app configuration file generated for vibelog on 2025-06-19T20:53:08Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'viblog'
+app = 'vibelog'
 primary_region = 'otp'
 kill_signal = 'SIGTERM'
 
 [build]
 
 [env]
-  PHX_HOST = 'viblog.fly.dev'
+  PHX_HOST = 'vibelog.fly.dev'
   PORT = '8080'
 
 [http_service]
