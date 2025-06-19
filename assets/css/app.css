@@ -29,10 +29,18 @@ body {
 .brutal-nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .brutal-nav-container {
+    padding: 0 0.5rem;
+  }
 }
 
 .brutal-logo {
@@ -44,6 +52,14 @@ body {
   padding: 0.75rem 1rem;
   background: #ffff00;
   box-shadow: 4px 4px 0px #000;
+}
+
+@media (max-width: 768px) {
+  .brutal-logo {
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 2px 2px 0px #000;
+  }
 }
 
 .brutal-logo:hover {
@@ -66,6 +82,14 @@ body {
   background: #00ff88;
   box-shadow: 3px 3px 0px #000;
   text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .brutal-nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 0px #000;
+  }
 }
 
 .brutal-nav-link:hover {
@@ -193,7 +217,21 @@ p {
   margin: 1.5rem 0;
   font-weight: 400;
   line-height: 1.7;
-  padding-left: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-left: 6px solid #ff0066;
+  background: #fafafa;
+  position: relative;
+}
+
+p:first-of-type {
+  border-left-color: #00ff88;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+p:hover {
+  background: #f0f0f0;
+  border-left-color: #ffff00;
 }
 
 /* Brutal code blocks */
@@ -218,13 +256,39 @@ code {
 /* Brutal lists */
 ul, ol {
   margin: 1.5rem 0;
-  padding-left: 2.75rem;
+  padding: 1.5rem 2rem;
   line-height: 1.7;
+  background: #f8f8f8;
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px #00ff88;
 }
 
 li {
   margin: 0.75rem 0;
-  font-weight: 400;
+  font-weight: 500;
+  color: #000;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border-left: 4px solid #ff0066;
+  list-style: none;
+  position: relative;
+  border: 2px solid #000;
+}
+
+li:before {
+  content: "→";
+  color: #ff0066;
+  font-weight: 800;
+  margin-right: 0.75rem;
+}
+
+ol li:before {
+  content: counter(list-counter) ".";
+  counter-increment: list-counter;
+}
+
+ol {
+  counter-reset: list-counter;
 }
 
 /* Brutal back link */
