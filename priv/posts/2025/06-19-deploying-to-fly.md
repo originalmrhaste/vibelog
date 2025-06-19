@@ -1,7 +1,7 @@
 %{
   title: "Deploying to Fly.io",
   author: "Bozidar Mitrovic",
-  tags: ~w(deployment fly.io phoenix),
+  tags: ~w(deployment fly.io phoenix ai-written),
   description: "Quick deployment to production"
 }
 ---
