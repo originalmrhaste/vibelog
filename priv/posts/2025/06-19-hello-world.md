@@ -43,12 +43,6 @@ Working with Claude Code was surprisingly smooth. It helped me:
 8. Fix layout issues and make it deployment-ready
 
 
-## What's Next
-
-This blog will serve as a place to document my development journey, share insights about Elixir and Phoenix, and explore new technologies. All powered by this simple yet elegant file-based approach.
-
-The beauty of this setup is its simplicity - no database complexity, just Markdown files that can be version controlled alongside the code.
-
 ## The Styling
 
 When the blog was first running, it looked pretty bland with default Phoenix styling. I asked Claude Code to make it styled in "neo-brutalism" - and wow, did it deliver! 
@@ -61,3 +55,9 @@ The result is an aggressive, in-your-face design with:
 - **No subtle design elements** - everything screams for attention
 
 It's the perfect aesthetic for a developer blog that doesn't want to blend into the background!
+
+## What's Next
+
+This blog will serve as a place to document my development journey, share insights about Elixir and Phoenix, and explore new technologies. All powered by this simple yet elegant file-based approach.
+
+The beauty of this setup is its simplicity - no database complexity, just Markdown files that can be version controlled alongside the code.
