@@ -56,7 +56,8 @@ defmodule Viblog.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:nimble_publisher, "~> 1.1.1"},
-      {:makeup_elixir, ">= 0.0.0"}
+      {:makeup_elixir, ">= 0.0.0"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
@@ -75,6 +76,12 @@ defmodule Viblog.MixProject do
         "tailwind viblog --minify",
         "esbuild viblog --minify",
         "phx.digest"
+      ],
+      check: [
+        "format --check-formatted",
+        "deps.unlock --check-unused",
+        "compile --warnings-as-errors",
+        "credo --strict"
       ]
     ]
   end

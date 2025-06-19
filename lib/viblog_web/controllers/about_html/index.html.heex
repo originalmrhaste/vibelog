@@ -3,13 +3,15 @@
 
   <%= for section <- @sections do %>
     <div class="brutal-post">
-      <h2><%= section.title %></h2>
-      <%= raw section.content %>
+      <h2>{section.title}</h2>
+      {raw(section.content)}
     </div>
   <% end %>
 
   <div class="brutal-post">
     <h2>EXPLORE MORE</h2>
-    <p>Check out my <.link href={~p"/blog"}>vibelog</.link> for technical posts and experiments!</p>
+    <p>
+      Check out my <.link href={~p"/blog"}>vibelog</.link> for technical posts and experiments!
+    </p>
   </div>
 </div>

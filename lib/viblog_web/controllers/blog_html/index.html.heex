@@ -4,18 +4,18 @@
   <%= for post <- @posts do %>
     <div id={post.id} class="brutal-post">
       <h2>
-        <.link href={~p"/blog/#{post.id}"}><%= post.title %></.link>
+        <.link href={~p"/blog/#{post.id}"}>{post.title}</.link>
       </h2>
 
       <div class="brutal-meta">
-        <time><%= post.date %></time> by <%= post.author %>
+        <time>{post.date}</time> by {post.author}
       </div>
 
       <div class="brutal-tags">
-        TAGGED: <%= Enum.join(post.tags, " • ") %>
+        TAGGED: {Enum.join(post.tags, " • ")}
       </div>
 
-      <%= raw post.description %>
+      {raw(post.description)}
     </div>
   <% end %>
 </div>

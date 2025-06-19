@@ -14,6 +14,7 @@ This is a Phoenix blog application called "Viblog" built without Ecto (database 
 - `mix deps.get` - Install Elixir dependencies
 - `mix test` - Run tests
 - `mix format` - Format code using Elixir formatter
+- `mix check` - Run all code quality checks (format, deps, compile, credo)
 
 ## Asset Management
 
