@@ -17,4 +17,15 @@ The deployment process with Fly.io was seamless. Within minutes of connecting my
 
 Fly.io automatically detected the Phoenix app, configured the build process, and provisioned the necessary resources. The free tier provides enough resources for a simple blog like this, making it perfect for side projects and personal sites.
 
+## Continuous Deployment
+
+To automatically deploy changes when pushing to GitHub, I enabled auto-deploy in the Fly.io Launch UI:
+
+1. Navigate to App > Deployments 
+2. Click "settings"
+3. Enable auto-deploying 
+4. Specify which branch to deploy from (main)
+
+Now every git push triggers an automatic deployment - no manual `flyctl deploy` needed!
+
 Live at https://vibelog.fly.dev
