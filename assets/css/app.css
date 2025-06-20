@@ -213,6 +213,20 @@ a:hover {
   font-weight: 700;
 }
 
+/* Brutal caution banner */
+.brutal-caution {
+  background: #ff0066;
+  color: #fff;
+  padding: 1rem;
+  border: 4px solid #000;
+  box-shadow: 6px 6px 0px #00ff88;
+  margin: 1rem 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
 /* Brutal paragraphs */
 p {
   margin: 1.5rem 0;
@@ -343,8 +357,8 @@ em {
   font-weight: 700;
 }
 
-/* Brutal header with presence */
-.brutal-header {
+/* Brutal navigation section - consistent for both index and show pages */
+.brutal-nav-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -353,42 +367,29 @@ em {
   gap: 1rem;
 }
 
-.brutal-presence {
-  flex-shrink: 0;
-  margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-  .brutal-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .brutal-presence {
-    margin-top: 0;
-    text-align: center;
-  }
-  
-  .brutal-header h1 {
-    margin-bottom: 1rem;
+/* Desktop: presence counter aligns to top of h1 */
+@media (min-width: 769px) {
+  .brutal-nav-section .brutal-meta-inline {
+    margin-top: 1rem; /* Aligns with h1 baseline */
+    flex-shrink: 0;
   }
 }
 
-/* Brutal navigation section */
-.brutal-nav-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
+/* Mobile: stacked layout with full width */
 @media (max-width: 768px) {
   .brutal-nav-section {
     flex-direction: column;
     align-items: stretch;
     text-align: center;
+    gap: 1rem;
+  }
+  
+  .brutal-nav-section h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .brutal-nav-section .brutal-meta-inline {
+    margin-top: 0;
   }
 }
 
@@ -401,6 +402,14 @@ em {
   font-weight: 700;
   font-size: 0.9rem;
   white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brutal-meta-inline:hover {
+  background: #ff0066;
+  color: #fff;
+  border-color: #fff;
 }
 
 @media (max-width: 768px) {

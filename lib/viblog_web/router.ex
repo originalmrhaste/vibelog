@@ -17,10 +17,10 @@ defmodule ViblogWeb.Router do
   scope "/", ViblogWeb do
     pipe_through :browser
 
-    get "/", BlogController, :index
+    live "/", BlogLive
     get "/about", AboutController, :index
-    get "/blog", BlogController, :index
-    get "/blog/:id", BlogController, :show
+    live "/blog", BlogLive
+    live "/blog/:id", BlogShowLive
   end
 
   # Other scopes may use custom stacks.

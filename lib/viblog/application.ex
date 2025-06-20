@@ -15,6 +15,7 @@ defmodule Viblog.Application do
       {Finch, name: Viblog.Finch},
       # Start a worker by calling: Viblog.Worker.start_link(arg)
       # {Viblog.Worker, arg},
+      ViblogWeb.Presence,
       # Start to serve requests, typically the last entry
       ViblogWeb.Endpoint
     ]
