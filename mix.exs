@@ -57,7 +57,10 @@ defmodule Viblog.MixProject do
       {:bandit, "~> 1.5"},
       {:nimble_publisher, "~> 1.1.1"},
       {:makeup_elixir, ">= 0.0.0"},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+      {:makeup_eex, ">= 0.0.0"},
+      {:makeup_html, ">= 0.0.0"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:tidewave, "~> 0.1", only: :dev}
     ]
   end
 

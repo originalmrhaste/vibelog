@@ -5,7 +5,7 @@ defmodule Viblog.Blog do
     build: Post,
     from: Application.app_dir(:viblog, "priv/posts/**/*.md"),
     as: :posts,
-    highlighters: [:makeup_elixir]
+    highlighters: [:makeup_elixir, :makeup_eex, :makeup_html]
 
   # The @posts variable is first defined by NimblePublisher.
   # Let's further modify it by sorting all posts by descending date.

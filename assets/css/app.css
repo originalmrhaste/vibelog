@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "./syntax.css";
 
 /* Neo-Brutalist Blog Styles */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
@@ -242,16 +243,32 @@ pre, code {
   border: 3px solid #fff;
 }
 
+/* Remove brutal styling for syntax highlighted code blocks */
+pre:has(code.makeup) {
+  background: transparent;
+  border: none;
+}
+
+pre code.makeup {
+  background: transparent;
+  border: none;
+}
+
 pre {
   padding: 1.5rem;
   overflow-x: auto;
-  box-shadow: 6px 6px 0px #ff0066;
+}
+
+/* Remove box-shadow for syntax highlighted code blocks */
+pre:has(code.makeup) {
+  box-shadow: none;
 }
 
 code {
   padding: 0.25rem 0.5rem;
   font-size: 0.9em;
 }
+
 
 /* Brutal lists */
 ul, ol {
@@ -324,4 +341,71 @@ em {
   color: #000;
   padding: 0.1rem 0.25rem;
   font-weight: 700;
+}
+
+/* Brutal header with presence */
+.brutal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brutal-presence {
+  flex-shrink: 0;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .brutal-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .brutal-presence {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .brutal-header h1 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Brutal navigation section */
+.brutal-nav-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .brutal-nav-section {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}
+
+/* Brutal inline meta */
+.brutal-meta-inline {
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: 2px solid #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .brutal-meta-inline {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
 }
