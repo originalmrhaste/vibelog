@@ -38,24 +38,22 @@ defmodule ViblogWeb.SitemapController do
     
     all_urls = static_pages ++ blog_posts
     
-    """
-    <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    #{Enum.map_join(all_urls, "\n", &generate_url_entry/1)}
-    </urlset>
-    """
+    url_entries = Enum.map_join(all_urls, "", &generate_url_entry/1)
+    
+    """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+#{url_entries}</urlset>"""
   end
 
   defp generate_url_entry(%{url: url, changefreq: changefreq, priority: priority, lastmod: lastmod}) do
-    lastmod_tag = if lastmod, do: "    <lastmod>#{lastmod}</lastmod>\n", else: ""
+    lastmod_tag = if lastmod, do: "    <lastmod>#{lastmod}</lastmod>", else: ""
     
-    """
-      <url>
-        <loc>#{Phoenix.HTML.html_escape(url)}</loc>
-    #{lastmod_tag}    <changefreq>#{changefreq}</changefreq>
-        <priority>#{priority}</priority>
-      </url>
-    """
+    """  <url>
+    <loc>#{url}</loc>#{if lastmod_tag != "", do: "\n#{lastmod_tag}", else: ""}
+    <changefreq>#{changefreq}</changefreq>
+    <priority>#{priority}</priority>
+  </url>
+"""
   end
 
   defp most_recent_post_date(posts) do
