@@ -8,6 +8,8 @@ This is a Phoenix blog application called "Viblog" built without Ecto (database 
 
 ## Development Commands
 
+Always assume the server is running on port 4000.
+
 - `mix phx.server` - Start the Phoenix server (visit http://localhost:4000)
 - `iex -S mix phx.server` - Start server in Interactive Elixir shell
 - `mix setup` - Install and setup dependencies
@@ -57,3 +59,14 @@ Tests are located in `test/` directory with support modules in `test/support/`. 
 - Erlang 27.3.3
 - Development server runs on port 4000
 - Hot reloading enabled in development via phoenix_live_reload
+
+## Available MCPs for Development
+
+Tidewave MCP (for Elixir/Phoenix development):
+
+- Execute SQL queries against the database
+- Run Elixir code in project context
+- Introspect application logs and runtime
+- Fetch documentation from Hex docs
+- View all Ecto schemas
+- Debug LiveView processes

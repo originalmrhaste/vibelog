@@ -50,9 +50,14 @@ defmodule ViblogWeb.BlogLive do
     <div class="brutal-container">
       <div class="brutal-nav-section">
         <h1>VIBELOG</h1>
-        <.link navigate={~p"/blog/adding-phoenix-presence"} class="brutal-meta-inline" title="How does this work?">
-          {@online_users} {reader_text(@online_users)} online
-        </.link>
+        <div class="brutal-nav-meta">
+          <.link navigate={~p"/blog/adding-phoenix-presence"} class="brutal-meta-inline" title="How does this work?">
+            {@online_users} {reader_text(@online_users)} online
+          </.link>
+          <.link navigate={~p"/blog-index"} class="brutal-meta-inline">
+            🔍 Search & Filter
+          </.link>
+        </div>
       </div>
 
       <%= for post <- @posts do %>

@@ -4,7 +4,7 @@
 }
 ---
 
-I'm **Bozidar Mitrovic**, a software engineer who builds systems that work.
+I'm **Bozidar Mitrovic**, a software engineer.
 
 I've spent years solving problems across industries - from cybersecurity intelligence to biotech to financial services. Whether it's a startup needing to move fast or an enterprise requiring bulletproof infrastructure, I figure out what needs to be built and build it.
 

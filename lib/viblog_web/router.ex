@@ -18,8 +18,13 @@ defmodule ViblogWeb.Router do
     pipe_through :browser
 
     live "/", BlogLive
-    get "/about", AboutController, :index
+    live "/about", AboutLive
+    live "/about/courses", CoursesLive
+    live "/about/projects", ProjectsLive
+    live "/about/tech-stack", TechStackLive
+    live "/about/misc", MiscLive
     live "/blog", BlogLive
+    live "/blog-index", BlogIndexLive
     live "/blog/:id", BlogShowLive
   end
 

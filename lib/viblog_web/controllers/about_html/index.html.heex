@@ -8,10 +8,25 @@
     </div>
   <% end %>
 
-  <div class="brutal-post">
-    <h2>EXPLORE MORE</h2>
-    <p>
-      Check out my <.link href={~p"/blog"}>vibelog</.link> for technical posts and experiments!
-    </p>
+  <div class="brutal-nav-cards">
+    <.link navigate={~p"/about/courses"} class="brutal-card">
+      <h3>📚 LEARN</h3>
+      <p>Favorite courses, books, and learning resources that shaped my journey</p>
+    </.link>
+
+    <.link navigate={~p"/about/projects"} class="brutal-card">
+      <h3>🛠️ BUILD</h3>
+      <p>Current projects I'm working on and experiments in progress</p>
+    </.link>
+
+    <.link navigate={~p"/about/tech-stack"} class="brutal-card">
+      <h3>⚡ STACK</h3>
+      <p>Technologies, tools, and frameworks I use for development</p>
+    </.link>
+
+    <.link navigate={~p"/blog"} class="brutal-card">
+      <h3>✍️ BLOG</h3>
+      <p>Technical posts, experiments, and thoughts on software development</p>
+    </.link>
   </div>
 </div>
