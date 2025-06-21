@@ -6,57 +6,54 @@ defmodule ViblogWeb.SitemapController do
   def index(conn, _params) do
     posts = Blog.all_posts()
     
-    sitemap_xml = generate_sitemap_xml(posts)
+    xml_content = build_sitemap_xml(posts)
     
     conn
-    |> put_resp_content_type("application/xml")
-    |> text(sitemap_xml)
+    |> put_resp_content_type("text/xml; charset=utf-8")
+    |> send_resp(200, xml_content)
   end
 
-  defp generate_sitemap_xml(posts) do
+  defp build_sitemap_xml(posts) do
     base_url = "https://vibelog.fly.dev"
+    recent_date = get_most_recent_date(posts)
     
-    static_pages = [
-      %{url: "#{base_url}/", changefreq: "weekly", priority: "1.0", lastmod: most_recent_post_date(posts)},
-      %{url: "#{base_url}/blog", changefreq: "daily", priority: "0.9", lastmod: most_recent_post_date(posts)},
-      %{url: "#{base_url}/blog-index", changefreq: "weekly", priority: "0.8", lastmod: most_recent_post_date(posts)},
-      %{url: "#{base_url}/about", changefreq: "monthly", priority: "0.7", lastmod: nil},
-      %{url: "#{base_url}/about/courses", changefreq: "monthly", priority: "0.6", lastmod: nil},
-      %{url: "#{base_url}/about/projects", changefreq: "weekly", priority: "0.6", lastmod: nil},
-      %{url: "#{base_url}/about/tech-stack", changefreq: "monthly", priority: "0.5", lastmod: nil},
-      %{url: "#{base_url}/about/misc", changefreq: "monthly", priority: "0.5", lastmod: nil}
+    # Static pages
+    static_urls = [
+      build_url_entry("#{base_url}/", recent_date, "weekly", "1.0"),
+      build_url_entry("#{base_url}/blog", recent_date, "daily", "0.9"),
+      build_url_entry("#{base_url}/blog-index", recent_date, "weekly", "0.8"),
+      build_url_entry("#{base_url}/about", nil, "monthly", "0.7"),
+      build_url_entry("#{base_url}/about/courses", nil, "monthly", "0.6"),
+      build_url_entry("#{base_url}/about/projects", nil, "weekly", "0.6"),
+      build_url_entry("#{base_url}/about/tech-stack", nil, "monthly", "0.5"),
+      build_url_entry("#{base_url}/about/misc", nil, "monthly", "0.5")
     ]
     
-    blog_posts = Enum.map(posts, fn post ->
-      %{
-        url: "#{base_url}/blog/#{post.id}",
-        changefreq: "monthly", 
-        priority: "0.8",
-        lastmod: Date.to_iso8601(post.date)
-      }
+    # Blog post URLs
+    blog_urls = Enum.map(posts, fn post ->
+      build_url_entry("#{base_url}/blog/#{post.id}", Date.to_iso8601(post.date), "monthly", "0.8")
     end)
     
-    all_urls = static_pages ++ blog_posts
+    all_urls = static_urls ++ blog_urls
     
-    url_entries = Enum.map_join(all_urls, "", &generate_url_entry/1)
-    
-    """<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-#{url_entries}</urlset>"""
+    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" <>
+    "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n" <>
+    Enum.join(all_urls, "\n") <>
+    "\n</urlset>"
   end
 
-  defp generate_url_entry(%{url: url, changefreq: changefreq, priority: priority, lastmod: lastmod}) do
-    lastmod_tag = if lastmod, do: "    <lastmod>#{lastmod}</lastmod>", else: ""
+  defp build_url_entry(url, lastmod, changefreq, priority) do
+    lastmod_tag = if lastmod, do: "    <lastmod>#{lastmod}</lastmod>\n", else: ""
     
-    """  <url>
-    <loc>#{url}</loc>#{if lastmod_tag != "", do: "\n#{lastmod_tag}", else: ""}
-    <changefreq>#{changefreq}</changefreq>
-    <priority>#{priority}</priority>
-  </url>
-"""
+    "  <url>\n" <>
+    "    <loc>#{url}</loc>\n" <>
+    lastmod_tag <>
+    "    <changefreq>#{changefreq}</changefreq>\n" <>
+    "    <priority>#{priority}</priority>\n" <>
+    "  </url>"
   end
 
-  defp most_recent_post_date(posts) do
+  defp get_most_recent_date(posts) do
     case Enum.max_by(posts, & &1.date, Date, fn -> nil end) do
       nil -> nil
       post -> Date.to_iso8601(post.date)
