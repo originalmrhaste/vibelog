@@ -26,6 +26,7 @@ defmodule ViblogWeb.Router do
     live "/blog", BlogLive
     live "/blog-index", BlogIndexLive
     live "/blog/:id", BlogShowLive
+    get "/sitemap.xml", SitemapController, :index
   end
 
   # Other scopes may use custom stacks.

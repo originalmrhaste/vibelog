@@ -4,9 +4,50 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title default="Bozidar Mitrovic - Developer Blog">
-      {assigns[:page_title]}
+    
+    <!-- Title -->
+    <.live_title default="Vibelog - Bozidar Mitrovic">
+      {ViblogWeb.SEO.page_title(assigns[:page_title])}
     </.live_title>
+    
+    <!-- Meta Description -->
+    <meta name="description" content={ViblogWeb.SEO.meta_description(assigns[:meta_description])} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={ViblogWeb.SEO.canonical_url(assigns[:canonical_path] || @conn.request_path)} />
+    
+    <!-- Open Graph Tags (works for Bluesky, Facebook, LinkedIn, Discord, WhatsApp, etc.) -->
+    <%
+      og_data = ViblogWeb.SEO.open_graph_data(assigns)
+    %>
+    <meta property="og:title" content={og_data.title} />
+    <meta property="og:description" content={og_data.description} />
+    <meta property="og:type" content={og_data.type} />
+    <meta property="og:url" content={og_data.url} />
+    <meta property="og:image" content={og_data.image} />
+    <meta property="og:site_name" content={og_data.site_name} />
+    
+    <!-- Article-specific Open Graph tags for blog posts -->
+    <%= if assigns[:article_data] do %>
+      <meta property="article:author" content={assigns.article_data.author} />
+      <meta property="article:published_time" content={assigns.article_data.published_time} />
+      <%= for tag <- assigns.article_data.tags do %>
+        <meta property="article:tag" content={tag} />
+      <% end %>
+    <% end %>
+    
+    <!-- Structured Data for Search Engines -->
+    <%= if assigns[:json_ld] do %>
+      <script type="application/ld+json">
+        {raw(Jason.encode!(assigns.json_ld))}
+      </script>
+    <% end %>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href={~p"/images/logo.svg"} />
+    <link rel="icon" type="image/x-icon" href={~p"/favicon.ico"} />
+    
+    <!-- Stylesheets and Scripts -->
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>

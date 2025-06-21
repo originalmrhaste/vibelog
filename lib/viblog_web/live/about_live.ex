@@ -17,7 +17,16 @@ defmodule ViblogWeb.AboutLive do
     end
 
     sections = About.all_sections()
-    {:ok, assign(socket, sections: sections, page_title: "About")}
+    
+    # Add SEO data
+    seo_data = ViblogWeb.SEO.about_seo_data()
+    
+    {:ok, assign(socket, 
+      sections: sections, 
+      page_title: seo_data.page_title,
+      meta_description: seo_data.meta_description,
+      canonical_path: seo_data.canonical_path
+    )}
   end
 
   @impl true

@@ -26,7 +26,19 @@ defmodule ViblogWeb.BlogLive do
       0
     end
 
-    {:ok, assign(socket, posts: posts, online_users: online_users, topic: topic)}
+    # Add SEO data
+    seo_data = ViblogWeb.SEO.blog_index_seo_data()
+    json_ld = ViblogWeb.SEO.generate_json_ld_website()
+    
+    {:ok, assign(socket, 
+      posts: posts, 
+      online_users: online_users, 
+      topic: topic,
+      page_title: seo_data.page_title,
+      meta_description: seo_data.meta_description,
+      canonical_path: seo_data.canonical_path,
+      json_ld: json_ld
+    )}
   end
 
   @impl true

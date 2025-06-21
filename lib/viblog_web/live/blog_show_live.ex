@@ -27,7 +27,27 @@ defmodule ViblogWeb.BlogShowLive do
       0
     end
     
-    {:ok, assign(socket, post: post, id: id, online_users: online_users, topic: topic)}
+    # Add SEO data
+    seo_data = ViblogWeb.SEO.blog_post_seo_data(post)
+    json_ld = ViblogWeb.SEO.generate_json_ld_blog_post(post)
+    
+    # Get related posts for internal linking
+    related_posts = Blog.get_related_posts(post)
+    
+    {:ok, assign(socket, 
+      post: post, 
+      id: id, 
+      online_users: online_users, 
+      topic: topic,
+      page_title: seo_data.page_title,
+      meta_description: seo_data.meta_description,
+      canonical_path: seo_data.canonical_path,
+      og_type: seo_data.og_type,
+      og_image: seo_data.og_image,
+      article_data: seo_data.article_data,
+      json_ld: json_ld,
+      related_posts: related_posts
+    )}
   end
 
   @impl true
@@ -81,6 +101,23 @@ defmodule ViblogWeb.BlogShowLive do
       <% end %>
 
       {raw(@post.body)}
+
+      <%= if @related_posts != [] do %>
+        <div class="brutal-post" style="margin-top: 3rem;">
+          <h2>RELATED POSTS</h2>
+          <div class="course-list">
+            <%= for related_post <- @related_posts do %>
+              <div class="course-item">
+                <h3><.link navigate={~p"/blog/#{related_post.id}"}>{related_post.title}</.link></h3>
+                <p>{related_post.description}</p>
+                <div style="margin-top: 0.5rem;">
+                  <strong>Tags:</strong> {Enum.join(related_post.tags, " • ")}
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
     """
   end

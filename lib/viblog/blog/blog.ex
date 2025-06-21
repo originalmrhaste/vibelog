@@ -33,4 +33,17 @@ defmodule Viblog.Blog do
       posts -> posts
     end
   end
+
+  def get_related_posts(current_post, limit \\ 3) do
+    all_posts()
+    |> Enum.reject(&(&1.id == current_post.id))
+    |> Enum.map(fn post ->
+      shared_tags = MapSet.intersection(MapSet.new(current_post.tags), MapSet.new(post.tags))
+      {post, MapSet.size(shared_tags)}
+    end)
+    |> Enum.filter(fn {_post, shared_count} -> shared_count > 0 end)
+    |> Enum.sort_by(fn {_post, shared_count} -> shared_count end, :desc)
+    |> Enum.map(fn {post, _shared_count} -> post end)
+    |> Enum.take(limit)
+  end
 end

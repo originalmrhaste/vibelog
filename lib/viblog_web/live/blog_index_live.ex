@@ -21,6 +21,8 @@ defmodule ViblogWeb.BlogIndexLive do
     
     {:ok, assign(socket, 
       page_title: "Blog Index",
+      meta_description: "Search and filter blog posts by tags, date, and content. Find technical posts about Elixir, Phoenix, and software development.",
+      canonical_path: "/blog-index",
       all_posts: all_posts,
       filtered_posts: all_posts,
       all_tags: all_tags,
