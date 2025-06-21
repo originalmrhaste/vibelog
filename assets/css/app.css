@@ -651,6 +651,8 @@ em {
   border: 4px solid #000;
   padding: 1.5rem;
   box-shadow: 8px 8px 0px #00ff88;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 .post-item h3 {
@@ -718,7 +720,7 @@ em {
   margin: 0;
   background: none;
   border: none;
-  padding: 0;
+  padding: 0 0 0 0.25rem;
   line-height: 1.6;
 }
 

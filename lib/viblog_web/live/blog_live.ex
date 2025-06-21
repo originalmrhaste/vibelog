@@ -80,7 +80,7 @@ defmodule ViblogWeb.BlogLive do
             </div>
           <% end %>
 
-          {raw(post.description)}
+          <div class="post-description">{raw(post.description)}</div>
         </div>
       <% end %>
     </div>
