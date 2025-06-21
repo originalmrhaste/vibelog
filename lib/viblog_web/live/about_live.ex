@@ -26,13 +26,6 @@ defmodule ViblogWeb.AboutLive do
     <div class="brutal-container">
       <h1>ABOUT ME</h1>
 
-      <%= for section <- @sections do %>
-        <div class="brutal-post">
-          <h2>{section.title}</h2>
-          {raw(section.content)}
-        </div>
-      <% end %>
-
       <div class="brutal-nav-cards">
         <.link navigate={~p"/about/courses"} class="brutal-card">
           <h3>📚 LEARN</h3>
@@ -64,6 +57,13 @@ defmodule ViblogWeb.AboutLive do
           <p>Search and filter all blog posts by tags, date, and content</p>
         </.link>
       </div>
+
+      <%= for section <- @sections do %>
+        <div class="brutal-post">
+          <h2>{section.title}</h2>
+          {raw(section.content)}
+        </div>
+      <% end %>
     </div>
     """
   end
