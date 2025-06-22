@@ -208,6 +208,20 @@ a:hover {
   margin-top: 1rem;
 }
 
+@media (max-width: 768px) {
+  .brutal-nav-meta {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    overflow-x: auto;
+  }
+  
+  .brutal-nav-meta .brutal-meta-inline {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
 .brutal-meta time {
   color: #00ff88;
 }
